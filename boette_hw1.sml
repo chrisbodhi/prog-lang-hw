@@ -39,4 +39,4 @@ fun dates_in_month( dates : (int*int*int) list , month : int ) =
   else
     if (#2 (hd dates))=month 
     then (hd dates) :: dates_in_month(tl dates, month)
-    else []
+    else dates_in_month(tl dates, month)
