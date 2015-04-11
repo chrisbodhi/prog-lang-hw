@@ -10,8 +10,9 @@ fun is_older( date1 : int*int*int, date2 : int*int*int ) =
   then true
   else false
 
+(* Exercise #2 *)
 (* Write a function number_in_month that takes a list of dates and a month (i.e., an int) and returns how many dates in the list are in the given month. *)
-fun in_month(date: int*int*int, month: int) =
+fun in_month( date: int*int*int, month: int ) =
     if (#2 date)=month
     then 1
     else 0
@@ -22,12 +23,14 @@ fun number_in_month( dates : (int*int*int) list , month : int) =
   else
     in_month(hd dates, month) + number_in_month( tl dates, month)
 
+(* Exercise #3 *)
 (* Write a function number_in_months that takes a list of dates and a list of months (i.e., an int list) and returns the number of dates in the list of dates that are in any of the months in the list of months. Assume the list of months has no number repeated. Hint: Use your answer to the previous problem *)
 fun number_in_months( dates : (int*int*int) list , months : int list) =
   if null months
-  then 0
+  then []
   else
-    number_in_month(dates, hd months) + number_in_months(dates, tl months) (* not the intended result type, but it runs! *)
+    number_in_month(dates, hd months)::number_in_months(dates, tl months)
+
 
 
 
